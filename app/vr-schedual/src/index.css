@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+
+    font-family: "Roboto", sans-serif;
+
+}
+body {
+    background-color: #F3F3F4;
+
+    padding-top: 1%;
+}

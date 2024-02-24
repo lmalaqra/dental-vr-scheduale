@@ -1,0 +1,33 @@
+.cell{
+
+    flex:0 0 16%;
+    border-bottom: 1px solid black;
+
+}
+.col-cell{
+    flex: 0 1 16%;
+    text-align: center;
+    align-items: center;
+    
+    
+    
+}
+.tag{
+    border-radius: 0px 0px 30px 0px;
+}
+.time{
+
+    font-family: "Inconsolata", monospace;
+}
+.head{
+    background-color: #353E37;
+}
+.animatea{
+    animation: animatesched 1s ease-in;
+}
+.animateb{
+    animation: animatesched 1s ease-in;
+    
+}
+
+
