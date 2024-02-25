@@ -30,4 +30,29 @@
     
 }
 
+.apt-child{
+    top:-10px;
+    left: -10px;
+    display: none;
+    transition: 1s ease-in-out;
 
+}
+.apt:hover .apt-child{
+    transition: 1s ease-in-out;
+
+    display: block;
+}
+
+
+.button-rotate{
+    animation: rt 0.1s ease-in-out;
+}
+@keyframes rt {
+    0%{
+        width:0;
+    }
+    100% {
+        width:80%;
+    }
+    
+}

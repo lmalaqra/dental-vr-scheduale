@@ -17,6 +17,14 @@ function Scheduale() {
     return () => {};
   }, []);
 
+  
+
+  const [status, setStatus] = useState({
+    loading: false,
+    done: false,
+    error: false,
+  });
+
   const data = useLoaderData();
   const [index, setIndex] = useState(0);
   const [slot, setSlots] = useState({
@@ -25,6 +33,7 @@ function Scheduale() {
   });
   const registerStudent = async () => {
     try {
+      setStatus((prev) => ({ loading: true, done: false, error: false }));
       const regSlot = await axios
         .post(process.env.REACT_APP_BASE_URL + "scheduale", {
           student: getUserFromLocalStorage(),
@@ -32,25 +41,32 @@ function Scheduale() {
         })
         .then((result) => result.data);
       localStorage.setItem("booked", true);
-      navigate("/");
+      setStatus((prev) => ({ loading: false, done: true, error: false }));
+setTimeout(()=>{
+
+  navigate("/");
+
+},3000)
     } catch (e) {
+      setStatus((prev) => ({ loading: false, done: false, error: true }));
+
       console.log(e);
     }
   };
   return (
     <div>
       <div className="mb-5">
-      <div className="flex w-full justify-center items bg-center p-2">
-      <img src="./logo.webp " className="w-20 h-20 mr-5"/>
+        <div className="flex w-full justify-center items bg-center p-2">
+          <img src="./logo.webp " className="w-20 h-20 mr-5" />
 
-      <div>
-        <h1 className="text-center text-2xl font-bold  ">
-          AN-NAJAH UNIVERSITY{" "}
-        </h1>
-        <h3 className="text-center text-sm ">
-          Department of Oral and Dental Medicine{" "}
-        </h3>
-        </div>
+          <div>
+            <h1 className="text-center text-2xl font-bold  ">
+              AN-NAJAH UNIVERSITY{" "}
+            </h1>
+            <h3 className="text-center text-sm ">
+              Department of Oral and Dental Medicine{" "}
+            </h3>
+          </div>
         </div>
       </div>
       <div className="flex justify-center  ">
@@ -76,22 +92,25 @@ function Scheduale() {
               &#x3e;
             </button>
           </div>
-          <button
-            onClick={registerStudent}
-            disabled={!slot.id && slot.id !== 0 ? true : false}
-            className="bg-blue-600 text-white px-2 py-1 rounded-md font-light text-md disabled:bg-slate-500 absolute right-4 "
-          >
-            {" "}
-            Register
-          </button>
         </div>
       </div>
 
       <div className="w-4/6 pb-10 mx-auto">
         {index === 0 ? (
-          <NewWeekSch data={data[0]} setSlots={setSlots} />
+          <NewWeekSch
+            registerStudent={registerStudent}
+            status={status}
+            data={data[0]}
+            setSlots={setSlots}
+          />
         ) : (
-          <NewWeekSch data={data[1]} setSlots={setSlots} index />
+          <NewWeekSch
+            registerStudent={registerStudent}
+            status={status}
+            data={data[1]}
+            setSlots={setSlots}
+            index
+          />
         )}
       </div>
     </div>

@@ -26,7 +26,7 @@ app.use(cors());
 app.use('/scheduale',schedualeRoutes);
 app.use('/student',studentRoutes)
 app.use((err, req, res, next) => {
-  console.error(err.stack)
+  console.log(err)
   res.status(400).send('Something broke!')
 })
 

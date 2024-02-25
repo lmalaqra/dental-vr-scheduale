@@ -53,7 +53,7 @@ module.exports = class {
       {
         "slots.students.student_id": id,
       },
-      { "slots.$": 1, week: 1 }
+      { "slots.$": 1, week: 1,start_date:1 }  
     );
     // if (!scheduale) throw new Erorr("your already booked ");
     // const slots = [...scheduale.slots].filter((el) => {
