@@ -16,13 +16,13 @@ const path = require("path");
 
 const app = express();
 // app.use(express.static("build "));
-app.use(express.static("build "));
+app.use(express.static(path.resolve(__dirname,"../app/vr-schedual/build")));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
-app.use("/scheduale", schedualeRoutes);
-app.use("/student", studentRoutes);
+app.use("/api/scheduale", schedualeRoutes);
+app.use("/api/student", studentRoutes);
 
 
 app.use((err, req, res, next) => {
@@ -52,7 +52,7 @@ app.get("/create", async (req, res) => {
 });
 
 app.get("/*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "build ", "index.html"));
+  res.sendFile(path.resolve(__dirname, "../app/vr-schedual/build/index.html" ));
 });
 
 

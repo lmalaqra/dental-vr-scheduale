@@ -12,6 +12,8 @@ import {
 import Register from "./Register";
 
 function Scheduale() {
+
+  const [reload,setRealod]=useState(false)
   const navigate = useNavigate();
   useEffect(() => {
     if (!checkIfStudentIsRegister()) navigate("/login");
