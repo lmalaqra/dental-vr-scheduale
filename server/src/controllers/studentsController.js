@@ -8,12 +8,12 @@ module.exports = class {
       const student = await studentServices.findStudentByStudentID(student_id);
       console.log(student)
 
-      if (student.registered===true) {throw new Error("You are already registered")};
+      if (student) {throw new Error("You are already registered")};
 
-      const updatedStudent = await studentServices.updateStudent(req.body);
+      const updatedStudent = await studentServices.createStudent(req.body);
       res.status(200).json(updatedStudent);
     } catch (e) {
-      next(e)
+      next(e);
     }
   }
   async createStudent(req, res, next) {
@@ -22,6 +22,7 @@ module.exports = class {
       res.json(result);
     } catch (e) {
       console.log(e);
+      next(e)
     }
   }
   async getStudentByStudentId(req, res, next) {
@@ -32,6 +33,7 @@ module.exports = class {
       res.json(st);
     } catch (e) {
       console.log(e);
+      next(e)
     }
   }
 };

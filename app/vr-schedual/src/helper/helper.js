@@ -11,9 +11,9 @@ const setUserInLocalStorage=(user)=>{
 }
  const checkIfStudentIsRegister=()=>{
 
-    const user=localStorage.getItem('user');
+    const user=localStorage.getItem('registered');
     if(!user)return false
-    return JSON.parse(user).registered
+    return user
 
  }
 
@@ -24,4 +24,9 @@ const checkIfStudentBookedApt=()=>{
     if(!isBooked)return false
     return isBooked;
 }
-export {getUserFromLocalStorage,setUserInLocalStorage,checkIfStudentBookedApt,checkIfStudentIsRegister}
+
+const getStudentIdfromLocalStorage=()=>{
+
+    return localStorage.getItem('student_id');
+}
+export {getUserFromLocalStorage,setUserInLocalStorage,checkIfStudentBookedApt,checkIfStudentIsRegister,getStudentIdfromLocalStorage}

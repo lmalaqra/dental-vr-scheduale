@@ -6,13 +6,15 @@ import NewWeekSch from "../components/NewWeekSch";
 import axios from "axios";
 import {
   checkIfStudentBookedApt,
-  getUserFromLocalStorage,
+  checkIfStudentIsRegister,
+  getStudentIdfromLocalStorage,
 } from "../helper/helper";
+import Register from "./Register";
 
 function Scheduale() {
   const navigate = useNavigate();
   useEffect(() => {
-    if (checkIfStudentBookedApt()) navigate("/");
+    if (!checkIfStudentIsRegister()) navigate("/login");
 
     return () => {};
   }, []);
@@ -36,15 +38,14 @@ function Scheduale() {
       setStatus((prev) => ({ loading: true, done: false, error: false }));
       const regSlot = await axios
         .post(process.env.REACT_APP_BASE_URL + "scheduale", {
-          student: getUserFromLocalStorage(),
+          student_id:getStudentIdfromLocalStorage() ,
           slot,
         })
         .then((result) => result.data);
-      localStorage.setItem("booked", true);
       setStatus((prev) => ({ loading: false, done: true, error: false }));
 setTimeout(()=>{
 
-  navigate("/");
+  window.location.reload();
 
 },3000)
     } catch (e) {
@@ -95,7 +96,8 @@ setTimeout(()=>{
         </div>
       </div>
 
-      <div className="w-4/6 pb-10 mx-auto">
+      <div className="w-full pb-10 mx-auto flex items-start ">
+      <Register/>
         {index === 0 ? (
           <NewWeekSch
             registerStudent={registerStudent}

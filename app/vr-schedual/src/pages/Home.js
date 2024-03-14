@@ -14,7 +14,7 @@ function Home() {
    
   return (
     <div>
-        {checkIfStudentBookedApt()?<Redirect path={'/register'}/>:checkIfStudentIsRegister()?<Redirect path={'/scheduale'} />:<Login/>}
+        {checkIfStudentIsRegister()?<Redirect path={'/scheduale'} />:<Login/>}
     </div>
   )
 }

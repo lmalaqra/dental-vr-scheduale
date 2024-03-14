@@ -18,7 +18,6 @@ function NewWeekSch({ data, setSlots, index, status, registerStudent }) {
   }
 
   const findSlotById = (id) => {
-    console.log(data);
     const slot = [...data.slots].find((el) => el.id === id);
     return slot;
   };
@@ -35,7 +34,7 @@ function NewWeekSch({ data, setSlots, index, status, registerStudent }) {
   };
 
   return (
-    <div className=" flex justify-center   ">
+    <div className=" flex justify-center w-5/6    ">
       <div className="flex  gap-0  flex justify-center">
         {[...Array(4)].map((el, i) => (
           <div className=" text-center flex flex-col justify-center hover:bg-white  shadow-sm hover:scale-105">

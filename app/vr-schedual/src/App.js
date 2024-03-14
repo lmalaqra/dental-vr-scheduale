@@ -9,6 +9,7 @@ import Scheduale from "./pages/Scheduale";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import { getUserFromLocalStorage } from "./helper/helper";
+import Login from "./pages/Login";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <div>Login</div>,
+    element: <Login/>,
   },
 ]);
 
